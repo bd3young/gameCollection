@@ -1,0 +1,13 @@
+{% extends "gameCollections/base.html" %}
+{% block content %}
+    <p>Genres</p>
+
+    <ul>
+        {% for genre in genres %}
+            <a href="{% url 'gameCollections:games' genre.id %}">{{ genre }}</a>
+            <p></p>
+        {% empty %}
+            <li>No genres have been added yet.</li>
+        {% endfor %}
+    </ul>
+{% endblock content %}

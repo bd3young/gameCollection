@@ -1,0 +1,17 @@
+  {% extends "gameCollections/base.html" %}
+
+{% block content %}
+    <p>Genre: {{ genre }}</p>
+
+    <ul>
+        {% for game in games %}
+            <li>
+                <p>{{ game.name }}</p>
+                <p>{{ game.console }}</p>
+                <p>{{ game.releaseDate }}</p>
+            </li>
+        {% empty %}
+            <li>No toppings have been added yet.</li>
+        {% endfor %}
+    </ul>
+{% endblock content %}
