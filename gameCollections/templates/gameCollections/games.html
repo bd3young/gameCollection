@@ -2,16 +2,21 @@
 
 {% block content %}
     <p>Genre: {{ genre }}</p>
-
+    <p>
+        <a href="{% url 'gameCollections:new_game' genre.id %}">Add new Game</a>
+    </p>
     <ul>
         {% for game in games %}
             <li>
                 <p>{{ game.name }}</p>
                 <p>{{ game.console }}</p>
                 <p>{{ game.releaseDate }}</p>
+                <p>
+                    <a href="{% url 'gameCollections:edit_game' game.id %}">Edit Game</a>
+                </p>
             </li>
         {% empty %}
-            <li>No toppings have been added yet.</li>
+            <li>No games have been added yet.</li>
         {% endfor %}
     </ul>
 {% endblock content %}
