@@ -1,12 +1,18 @@
 {% extends "gameCollections/base.html" %}
+{% load bootstrap4 %}
+
+{% block page_header %}
+    <h2>Add a new game for <a href="{% url 'gameCollections:games' genre.id %}">{{ genre }}</a></h2>
+{% endblock page_header %}
+
 {% block content %}
-    <p><a href="{% url 'gameCollections:games' genre.id %}">{{ genre }}</a></p>
- 
-    <p>Add a new game:</p>
+
     <form action="{% url 'gameCollections:new_game' genre.id %}" method='post'>
         {% csrf_token %}
-        {{ form.as_p }}
-        <button name='submit'>Add Game</button>
+        {% bootstrap_form form %}
+        {% buttons %}
+            <button name="submit" class= "btn btn-primary">Add Game</button>
+        {% endbuttons %}
     </form>
  
 {% endblock content %}

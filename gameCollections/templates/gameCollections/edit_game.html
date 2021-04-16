@@ -1,12 +1,19 @@
 {% extends "gameCollections/base.html" %}
+
+{% load bootstrap4 %}
+
+{% block page_header %}
+    <h3> Edit {{ game.name }} for <a href="{% url 'gameCollections:games' genre.id %}">{{ genre }}</a></h3>
+{% endblock page_header %}
+
 {% block content %}
-    <p><a href="{% url 'gameCollections:games' genre.id %}">{{ topic }}</a></p>
+    
  
-    <p>Edit Game:</p>
- 
-    <form action="{% url 'gameCollections:edit_game' game.id %}" method='post'>
+    <form input="{% url 'gameCollections:edit_game' game.id %}" method='post'>
         {% csrf_token %}
-        {{ form.as_p }}
-        <button name="submit">Save changes</button>
+        {% bootstrap_form form %}
+        {% buttons %}
+            <button name="submit" class= "btn btn-primary">Save changes</button>
+        {% endbuttons %}
     </form>
 {% endblock content %}

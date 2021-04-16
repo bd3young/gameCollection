@@ -1,16 +1,27 @@
 {% extends "gameCollections/base.html" %}
+
 {% block content %}
-    <p>Genres</p>
 
-    <ul>
+    <h3><a class="btn btn-lg btn-primary" href="{% url 'gameCollections:new_genre' %}" role="button">Add a new Genre</a></h3>
+    
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col"><h1>Genres</h1></th>
+            <tr>
+        </thead>
+        <tbody>
         {% for genre in genres %}
-            <a href="{% url 'gameCollections:games' genre.id %}">{{ genre }}</a>
-            <p></p>
+            <tr>
+                <th><a href="{% url 'gameCollections:games' genre.id %}">{{ genre }}</a></th>
+            </tr>
         {% empty %}
-            <li>No genres have been added yet.</li>
+            <h3>No genres have been added yet.</h3>
         {% endfor %}
-    </ul>
+        </tbody>
+        
+    </table>
 
-    <a href="{% url 'gameCollections:new_genre' %}">Add a new genre</a>
+    
 
 {% endblock content %}

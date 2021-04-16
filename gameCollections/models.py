@@ -10,8 +10,8 @@ class Genre(models.Model):
 
 class Game(models.Model):
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
-    name = models.TextField()
-    console = models.TextField()
+    name = models.CharField(max_length=200)
+    console = models.CharField(max_length=200)
     releaseDate = models.DateField()
  
     class Meta:
