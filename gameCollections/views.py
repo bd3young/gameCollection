@@ -40,7 +40,7 @@ def new_genre(request):
             return redirect('gameCollections:genres')
 
     context = {'form': form}
-    return render(request, 'gamecollections/new_genre.html', context)
+    return render(request, 'gameCollections/new_genre.html', context)
 
 @login_required
 def new_game(request, genre_id):
